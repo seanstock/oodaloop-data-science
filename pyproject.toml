@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oodaloop-ds"
+version = "0.0.1"
+authors = [
+  { name="Sean G Cook", email="seangcook@gmail.com" },
+]
+description = "A data science project initializer for Cursor."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "click>=8.0",
+    "jupyter",
+    "notebook",
+    "python-dotenv",
+    "databricks-connect"
+]
+
+[project.urls]
+Homepage = "https://github.com/seanstock/oodaloop-ds"
+Issues = "https://github.com/seanstock/oodaloop-ds/issues"
+
+[project.scripts]
+ooda = "oodaloop_ds.cli:cli" 

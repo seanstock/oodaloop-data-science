@@ -1,0 +1,10 @@
+---
+description: "oodaloop ds project rules"
+globs: []
+alwaysApply: true
+---
+
+**Prioritize Automation and Practical Verification:** Automate tasks with appropriate tools (e.g., Docker, scripts). Always verify functionality, especially for web services (e.g., using `curl` for external reachability checks). 
+**Maintain Clean Code and Clear Structure:** Focus on readable, well-organized code. Refactor as needed. Ensure file structures are logical (e.g., `templates/`, `static/`).
+**Stay Focused, Communicate Clearly:** Address the current task precisely. Clearly state actions ("I will...") and requests ("Could you..."). Avoid ambiguous phrasing like "Let's".
+**Be Careful with .ipynb files. The Editing tools available to you do not work with them well and frequently create duplicate cell blocks. After modifying one, do a full pass read to make sure the structure is sound. 

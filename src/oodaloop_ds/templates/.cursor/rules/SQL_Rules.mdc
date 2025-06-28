@@ -1,0 +1,45 @@
+# Jupyter Notebook SQL Rules
+
+> **CRITICAL: NO SQL IN NOTEBOOKS**  
+> **NEVER write SQL directly in Jupyter notebook cells.** All SQL must be written in separate `.sql` files.
+
+## Required Workflow
+
+### 1. Write SQL in separate files
+- Create `.sql` files in the `sql/` directory
+- Use descriptive filenames: `sql/revenue_by_channel.sql`, `sql/user_cohort_analysis.sql`
+- One logical query per file
+- Include comments explaining the query purpose
+
+### 2. Load SQL from files in notebooks
+Use this pattern in your notebook cells:
+
+```python
+# Load SQL from file
+with open('./sql/revenue_by_channel.sql', 'r') as f:
+    revenue_query = f.read()
+
+df = client.query(revenue_query).to_dataframe()
+```
+
+Or use this helper pattern:
+
+```python
+def load_sql(filename):
+    """Load SQL from sql/ directory."""
+    with open(f'./sql/{filename}', 'r') as f:
+        return f.read()
+```
+
+```python
+# Usage
+revenue_query = load_sql('revenue_by_channel.sql')
+df = client.query(revenue_query).to_dataframe()
+```
+
+## Benefits of This Approach
+ **SQL Linting**: sqlfluff can lint `.sql` files but not SQL in notebooks  
+ **Version Control**: SQL changes are clearly visible in git diffs  
+ **Reusability**: SQL can be shared across notebooks and other tools  
+ **Testing**: SQL can be tested independently  
+ **Documentation**: `.sql` files can have proper comments

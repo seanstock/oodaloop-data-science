@@ -1,0 +1,77 @@
+---
+description: USE WHEN a new chat starts. This rule defines the workflow and division of labor between the user and the agent for an ooda-ds project at the start of a project.
+globs: 
+alwaysApply: true
+---
+- **The User (You):** Runs `ooda` commands in the terminal, edits local files (`.env`, `analysis_brief.md`, SQL queries), and provides high-level direction.
+- **The Agent (Me):** Reads local files, generates plans and code, and provides analysis based on the context you provide.
+
+### Workflow Steps
+
+**1. Define the Analysis Brief (User Task)**
+On a new conversation starting I immediately check for the existence of `docs/analys_plan.md` before responding. 
+
+
+If the plan exists, I proceed as normal.
+
+If the plan does not exist: 
+
+  a. I ask the user if they would like to fill out `docs/analysis_brief.md` with additional info, or if they are ready to create the plan. 
+  c. I provide continued support until the user is ready to create the plan.
+  d. When the user is ready to create the plan, I proceed to step 3 below. 
+
+**3. Generate the Analysis Plan (Agent Task)**
+This is my primary generative task. When the user has completed the brief, they will ask me to generate the analysis plan.
+
+*   **User Prompt:** "create the analysis plan" or "ooda plan"
+*   **My Action:**
+    1.  I will reread `docs/analysis_brief.md`.
+    2.  I will read the contents of the `/metadata` directory.
+    2.  I will overwrite `docs/analysis_plan.md` with a new generated plan.
+    4.  I will then immediately proceed to step 4.
+
+## 2 Command Reference
+
+| Goal | Command | Notes |
+|------|---------|-------|
+| Initialise | `ooda init --force` | Use `--force` to overwrite |
+| Auth | `ooda dbtoken --force` | Application credential for databricks|
+| List catalog | `ooda list-catalog --format json` | JSON for machine parsing |
+| Expand table | `ooda expand-table` | Writes JSON metadata |
+
+
+---
+
+## 3. Hard Requirements
+
+1. Do not write SQL into notebooks. Save standalone query files to `sql/` and run `sqlfluff lint sql/<file>.sql --dialect bigquery` before execution.
+2. Do not start writing the ANALYSIS PLAN until the user has reviewed the ANALYSIS BRIEF and given direction for you to continue.
+
+---
+
+## 4. Best Practices
+
+- Reference JSON metadata instead of dumping schemas into chat.
+- Use `dry_run` for heavy queries and show cost to the human.
+- Respect token limits—summarize where possible.
+- Commit code, notebooks, docs, and versioned SQL in `sql/`  
+**never** save large artifacts or credentials.
+
+---
+
+##5. Anti-Patterns 
+
+- Expanding whole datasets "just in case"
+- Mutating BigQuery tables
+- Storing credentials or PII in the repo
+
+---
+
+## 6. Pre-Query Checklist
+
+1. Metadata expanded for all referenced tables?  
+2. Primary keys acceptable?  
+
+
+
+3. Costs & scans reasonable?
