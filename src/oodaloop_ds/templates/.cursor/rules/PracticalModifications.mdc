@@ -1,0 +1,13 @@
+---
+description: "oodaloop ds project rules"
+globs: []
+alwaysApply: true
+---
+
+**Prioritize Automation and Practical Verification:** Automate tasks with appropriate tools (e.g., Docker, scripts). Always verify functionality, especially for web services (e.g., using `curl` for external reachability checks). 
+**Maintain Clean Code and Clear Structure:** Focus on readable, well-organized code. Refactor as needed. Ensure file structures are logical (e.g., `templates/`, `static/`).
+**Be Careful with .ipynb files.** The Editing tools available to you do not work with them well and frequently create duplicate cell blocks. After modifying one, do a full pass read to make sure the structure is sound.
+**Code Consistently** Use functional and declarative programming patterns; avoid classes. Prefer iteration and modularization over code duplication. Use only lower case alphanumerics and underscores for variable names. Use descriptive variable names. Avoid unnessecary exception handling and commenting in code - aim for simplicity unless complexity is called for.,
+**Security** Use environment variables for sensitive data (SECRET_KEY, database credentials). Do not commit them. 
+**Important!** try to fix things at the cause, not the symptom. Do not use fake data unless approved by the user. 
+

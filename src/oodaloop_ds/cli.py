@@ -79,7 +79,7 @@ def copy_template_files(template_dir, dest_dir):
 @cli.command()
 def init():
     """Initializes a new data science project."""
-    click.echo("Initializing OODA Loop DS project...")
+    click.echo("Initializing oodaloop DS project...")
     
     project_dir = Path.cwd()
     

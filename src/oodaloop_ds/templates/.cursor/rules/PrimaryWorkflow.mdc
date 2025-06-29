@@ -9,14 +9,15 @@ alwaysApply: true
 ### Workflow Steps
 
 **1. Define the Analysis Brief (User Task)**
-On a new conversation starting I immediately check for the existence of `docs/analys_plan.md` before responding. 
+On a new conversation starting I immediately check for the existence of `docs/analys_plan.md` before responding. I immediately read the contents of `metadata`.
 
 
 If the plan exists, I proceed as normal.
 
 If the plan does not exist: 
 
-  a. I ask the user if they would like to fill out `docs/analysis_brief.md` with additional info, or if they are ready to create the plan. 
+  a. I ask the user if they want to work without a plan conversationally, if they would like to fill out `docs/analysis_brief.md` with additional info, or if they would like me to create a plan. 
+  b. If the user want to work without a plan, I break out of this workflow and wait for additional context. 
   c. I provide continued support until the user is ready to create the plan.
   d. When the user is ready to create the plan, I proceed to step 3 below. 
 
@@ -27,8 +28,8 @@ This is my primary generative task. When the user has completed the brief, they 
 *   **My Action:**
     1.  I will reread `docs/analysis_brief.md`.
     2.  I will read the contents of the `/metadata` directory.
-    2.  I will overwrite `docs/analysis_plan.md` with a new generated plan.
-    4.  I will then immediately proceed to step 4.
+    2.  I will overwrite `docs/analysis_plan.md` with a new generated plan follwoing the default template..
+
 
 ## 2 Command Reference
 
