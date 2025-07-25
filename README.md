@@ -83,29 +83,20 @@ The agent will read the brief, generate a detailed `docs/analysis_plan.md`, and 
 
 ## Project Structure
 
-The `init` command will generate the following structure:
+The `init` command will generate the following structure in your project directory:
 ```
 .
-├── .gitignore
-├── LICENSE.txt
-├── pyproject.toml
-├── README.md
-└── src/
-    └── oodaloop_ds/
-        ├── __init__.py
-        ├── cli.py
-        └── templates/
-            ├── .cursor/
-            │   └── rules/
-            │       ├── KnowledgeBase.mdc
-            │       ├── PracticalModifications.mdc
-            │       └── PrimaryWorkflow.mdc
-            ├── databricks.env
-            ├── docs/
-            │   ├── analysis_brief.md
-            │   └── analysis_plan.md
-            ├── metadata/
-            ├── notebooks/
-            │   └── exploration.ipynb.txt
-            └── sql/
+├── .cursor/
+│   └── rules/
+│       ├── KnowledgeBase.mdc
+│       ├── PracticalModifications.mdc
+│       └── PrimaryWorkflow.mdc
+├── docs/
+│   ├── analysis_brief.md
+│   └── analysis_plan.md
+├── metadata/
+├── notebooks/
+│   └── exploration.ipynb
+├── sql/
+└── .env
 ``` 

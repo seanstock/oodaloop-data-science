@@ -93,7 +93,7 @@ def init():
 
     click.echo("\nProject initialized successfully!")
     click.echo("Next steps:")
-    click.echo("1. Fill out `docs/questionnaire.md`.")
+    click.echo("1. Fill out `docs/analysis_brief.md`.")
     click.echo("2. Add database schema information to the `metadata` directory.")
     click.echo("3. Start your analysis in `notebooks/exploration.ipynb`.")
 
